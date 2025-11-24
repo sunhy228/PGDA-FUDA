@@ -124,7 +124,7 @@ class BaseAgent(object):
         :return:
         """
         #self.train()
-        source_proto, target_proto = self.test()
+        source_proto, target_proto = self.train()
         #self.cleanup()
         '''
         try:
@@ -168,6 +168,16 @@ class BaseAgent(object):
             # save
             self.save_checkpoint()
 
+            return self.proto()
+
+
+    def proto(self):
+        """
+        Obtain the prototypes of the source and target domains
+        :return:
+        """
+        raise NotImplementedError
+    
     def train_one_epoch(self):
         """
         One epoch of training
